@@ -1,0 +1,100 @@
+{
+  "players": [
+    {
+      "name": "Lionel Messi",
+      "img": "images/messi.jpg",
+      "posiciones": ["Delantero Izquierdo", "Delantero Derecho", "Delantero Centro", "Volante Derecho", "Volante Izquierdo", "Extremo Derecho", "Extremo Izquierdo"],
+      "description": "Considerado uno de los mejores jugadores de todos los tiempos. Conocido por su extraordinaria técnica, visión de juego y capacidad goleadora."
+    },
+    {
+      "name": "Kylian Mbappé",
+      "img": "images/mbappe.jpg",
+      "posiciones": ["Delantero Izquierdo", "Delantero Derecho", "Delantero Centro"],
+      "description": "Delantero francés conocido por su velocidad explosiva y definición. Campeón del mundo con Francia en 2018."
+    },
+    {
+      "name": "Kevin De Bruyne",
+      "img": "images/kevin de bruyne.jpg",
+      "posiciones": ["Volante Derecho", "Volante Izquierdo", "Volante Centro"],
+      "description": "Mediocampista belga con una visión de juego excepcional. Maestro de los pases y asistencias."
+    },
+    {
+      "name": "Pedri",
+      "img": "images/pedri.png",
+      "posiciones": ["Volante Derecho", "Volante Izquierdo", "Volante Centro"],
+      "description": "Joven talento español con gran técnica y control de balón. Pieza clave en el mediocampo del Barcelona."
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "img": "images/ronaldo.jpg",
+      "posiciones": ["Delantero Izquierdo", "Delantero Derecho", "Delantero Centro"],
+      "description": "Uno de los máximos goleadores de la historia. Conocido por su potencia física y capacidad goleadora."
+    },
+    {
+      "name": "Misael Escuti",
+      "img": "images/escuti.jpg",
+      "posiciones": ["Arquero"],
+      "description": "Arquero chileno, uno de los jugadores con más años jugando dentro del club."
+    },
+    {
+      "name": "Roberto Rojas",
+      "img": "images/rojas.jpg",
+      "posiciones": ["Arquero"],
+      "description": "En sus 5 años en el club, ganó 2 copas y 2 ligas, uno de los mejores arqueros de la historia del país."
+    },
+    {
+      "name": "Jose Daniel Morón",
+      "img": "images/moron.jpg",
+      "posiciones": ["Arquero"],
+      "description": "Arquero titular de la Copa Libertadores 1991."
+    },
+    {
+      "name": "Marcelo Ramírez",
+      "img": "images/rambo.jpg",
+      "posiciones": ["Arquero"],
+      "description": "Conocido por su carácter aguerrido, sus reflejos felinos y su liderazgo en el arco. Ídolo de Colo-Colo y figura de la selección chilena en los años 90, destacaba por su valentía, personalidad fuerte y atajadas espectaculares."
+    },
+    {
+      "name": "Claudio Bravo",
+      "img": "images/bravo.jpg",
+      "posiciones": ["Arquero"],
+      "description": "reconocido por su elegancia bajo los tres palos, su gran juego con los pies y liderazgo absoluto. Capitán histórico de la Generación Dorada, fue clave en la obtención del campeonato de apertura 2006, además de las Copas América 2015 y 2016."
+    },
+    {
+      "name": "Mario Osbén",
+      "img": "images/osben.jpg",
+      "posiciones": ["Arquero"],
+      "description": "apodado El Gato, fue un destacado arquero chileno de los años 70 y 80. Reconocido por sus reflejos felinos y agilidad. Fue parte de la selección chilena en el Mundial de España 1982 y es recordado por su sobriedad, carácter y seguridad bajo los tres palos."
+    },
+    {
+      "name": "Alfonso Neculñir",
+      "img": "images/neculnir.png",
+      "posiciones": ["Lateral Izquierdo"],
+      "description": "Tuvo una destacada carrera en Colo-Colo, club con el que ganó varios títulos nacionales. Era conocido por su solidez, entrega en la cancha y su importante rol como jugador de equipo. También representó a la selección chilena en algunas oportunidades. Su apellido mapuche es símbolo de identidad y orgullo dentro del fútbol chileno."
+    },
+    {
+      "name": "Luis Hormazábal",
+      "img": "images/luis hormazabal.jpg",
+      "posiciones": ["Lateral Izquierdo"],
+      "description": "Se destacó por su firmeza en la marca y su compromiso táctico. Tuvo pasos por clubes importantes del fútbol chileno, incluyendo Colo-Colo, donde aportó solidez a la línea defensiva. Fue un jugador respetado por su disciplina y rendimiento constante dentro del campo."
+    },
+    {
+      "name": "Francisco Rojas",
+      "img": "images/murci.jpg",
+      "posiciones": ["Lateral Izquierdo"],
+      "description": "El Murci fue un destacado lateral izquierdo chileno, conocido por su velocidad, entrega y buena proyección ofensiva. Tuvo una destacada carrera en Colo-Colo, donde fue ídolo durante los años 90 y principios de los 2000. También jugó en el fútbol europeo (St. Gallen, Suiza) y fue parte de la selección chilena en el Mundial de Francia 1998. Su versatilidad le permitió actuar en distintas posiciones del fondo, aunque siempre destacó como lateral por la izquierda."
+    },
+    {
+      "name": "Isaac Carrasco",
+      "img": "images/carrasco.jpg",
+      "posiciones": ["Lateral Izquierdo"],
+      "description": "reconocido por su solidez, liderazgo y fuerte carácter en la cancha. Jugó en varios clubes chilenos, entre ellos Colo-Colo, donde dejó una huella como un zaguero aguerrido y respetado. También tuvo participación en la selección chilena, incluyendo su presencia en la Copa del Mundo de 1962 disputada en Chile."
+    },
+    {
+      "name": "Javier Margas",
+      "img": "images/margas.jpg",
+      "posiciones": ["Lateral Izquierdo"],
+      "description": " destacado por su entrega, juego aéreo y carisma dentro y fuera de la cancha. Tuvo una sólida carrera en Colo-Colo, donde ganó múltiples títulos, y también jugó en clubes internacionales como West Ham United en Inglaterra. Es recordado tanto por su estilo de juego como por su personalidad excéntrica, incluyendo su famoso cabello teñido con los colores de la bandera chilena."
+    }
+  ]
+} 

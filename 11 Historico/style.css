@@ -1,0 +1,604 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('images/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Overlay para mejorar la legibilidad */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  flex-grow: 1;
+}
+
+select {
+  padding: 6px;
+  font-size: 0.9em;
+  margin: 10px auto;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Cancha con fondo */
+.pitch {
+  background-image: url('images/cancha.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 800px;
+  max-height: 650px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px auto;
+  border-radius: 15px;
+  position: relative;
+  backdrop-filter: blur(8px);
+  background-color: rgba(30, 45, 36, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.pitch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('images/cancha.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  border-radius: 15px;
+  z-index: 0;
+}
+
+/* Fila de jugadores */
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Contenedor de cada posición */
+.position {
+  position: absolute;
+  width: clamp(60px, 8vw, 70px);
+  height: clamp(60px, 8vw, 70px);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+.position:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Animaciones para las formaciones */
+.position.transitioning {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.position.grouping {
+  top: 50% !important;
+  left: 50% !important;
+}
+
+.position.entering {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.position.spreading-out {
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.position.preserve {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efecto de aparición para nuevas posiciones */
+@keyframes appearPosition {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.position.appearing {
+  animation: appearPosition 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Imagen del jugador */
+.player {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.player img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.player:hover img {
+  transform: scale(1.1);
+}
+
+/* Nombre en hover */
+.player::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 0.7em;
+  padding: 4px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+/* Modal para galería */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0);
+  transition: background-color 0.3s ease;
+  opacity: 0;
+}
+
+.modal.active {
+  display: block;
+  opacity: 1;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(30, 45, 36, 0.8) 0%, rgba(30, 45, 36, 0.7) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 600px;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.modal.active .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.close:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Galería de jugadores */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Contenedor para jugador seleccionado */
+.selected-player-container {
+  display: none;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.selected-player-container.active {
+  display: flex;
+  gap: 20px;
+  align-items: start;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.selected-player-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.selected-player-info {
+  color: black;
+  text-align: left;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin-top: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected-player-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.selected-player-description {
+  font-size: 0.9em;
+  line-height: 1.4;
+  font-family: "Comic Sans MS", cursive;
+  margin-bottom: 15px;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.agregar-jugador-btn {
+  background-color: #2d2d2d;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s;
+  margin-top: auto;
+}
+
+.agregar-jugador-btn:hover {
+  background-color: #444;
+}
+
+.agregar-jugador-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Animación para las imágenes de la galería */
+.gallery-grid img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  transform: scale(1);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.gallery-grid img.selected {
+  transform: scale(1.05);
+  border: 3px solid #2d2d2d;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.cerrar-galeria {
+  margin-top: 15px;
+  padding: 8px 14px;
+  background-color: #2d2d2d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cerrar-galeria:hover {
+  background-color: #444;
+}
+
+/* Contenedor para los controles superiores */
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+
+.formation-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Estilo para el botón enviar */
+.enviar-btn {
+  background-color: #2d2d2d;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s;
+}
+
+.enviar-btn:hover {
+  background-color: #444;
+}
+
+/* Animación para cuando se agrega un jugador */
+@keyframes playerAdded {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.position.player-added {
+  animation: playerAdded 0.5s ease-in-out;
+}
+
+/* Nombre del jugador debajo de la posición */
+.player-name {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón para quitar selección */
+.quitar-seleccion {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.quitar-seleccion:hover {
+  background-color: #b71c1c;
+}
+
+/* Estilos para la opción de quitar jugador en la galería */
+.gallery-grid img.quitar {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.gallery-grid img.quitar:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+}
+
+/* Modal de envío */
+.send-modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0);
+  transition: background-color 0.3s ease;
+  opacity: 0;
+}
+
+.send-modal.active {
+  display: block;
+  opacity: 1;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.send-modal-content {
+  background: linear-gradient(135deg, rgba(30, 45, 36, 0.8) 0%, rgba(30, 45, 36, 0.7) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 15% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.send-modal.active .send-modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.send-modal h2 {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.send-modal input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 1em;
+}
+
+.send-modal .buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.send-modal button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s;
+}
+
+.send-modal .confirm-btn {
+  background-color: #2d2d2d;
+  color: white;
+}
+
+.send-modal .confirm-btn:hover {
+  background-color: #444;
+}
+
+.send-modal .cancel-btn {
+  background-color: #6b6b6b;
+  color: white;
+}
+
+.send-modal .cancel-btn:hover {
+  background-color: #808080;
+}
+
+.send-modal .message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.send-modal .message.error {
+  background-color: rgba(211, 47, 47, 0.2);
+  color: #ff5252;
+}
+
+.send-modal .message.success {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #69f0ae;
+}

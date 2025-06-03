@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>11 Histórico de Colo-Colo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="header">
+    <img src="images/logo.png" alt="Logo Colo-Colo" class="logo">
+    <h1>11 Histórico de Colo-Colo</h1>
+  </div>
+
+  <div class="controls-container">
+    <div class="formation-control">
+      <label for="formacion">Selecciona formación:</label>
+      <select id="formacion" onchange="cargarFormacion(this.value)">
+        <option value="4-4-2">4-4-2</option>
+        <option value="4-3-3">4-3-3</option>
+        <option value="3-5-2">3-5-2</option>
+      </select>
+    </div>
+    <button onclick="enviarPlantilla()" class="enviar-btn">Enviar</button>
+  </div>
+
+  <div class="pitch"></div>
+
+  <div id="galleryModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeGallery()">&times;</span>
+      
+      <div class="gallery-grid" id="galleryGrid"></div>
+
+      <div class="selected-player-container" id="selectedPlayerContainer">
+        <img class="selected-player-image" id="selectedPlayerImage" src="" alt="Jugador seleccionado">
+        <div class="selected-player-info">
+          <div class="selected-player-name" id="selectedPlayerName"></div>
+          <div class="selected-player-description" id="selectedPlayerDescription"></div>
+          <button class="agregar-jugador-btn" id="agregarJugadorBtn" onclick="confirmarSeleccion()">Agregar a la plantilla</button>
+        </div>
+      </div>
+      
+      <button onclick="closeGallery()" class="cerrar-galeria">Volver a la cancha</button>
+    </div>
+  </div>
+
+  <div id="sendModal" class="send-modal">
+    <div class="send-modal-content">
+      <h2>Enviar Plantilla</h2>
+      <input type="email" id="emailInput" placeholder="Ingresa tu email" />
+      <div class="message" style="display: none;"></div>
+      <div class="buttons">
+        <button class="confirm-btn" onclick="confirmarEnvio()">Enviar</button>
+        <button class="cancel-btn" onclick="cerrarModalEnvio()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+  <script type="module" src="app.js"></script>
+</body>
+</html>

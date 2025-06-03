@@ -1,0 +1,46 @@
+[
+  {
+    "posicion": "Delantero 1",
+    "jugador": "Kylian Mbappé"
+  },
+  {
+    "posicion": "Delantero 2",
+    "jugador": "Cristiano Ronaldo"
+  },
+  {
+    "posicion": "Delantero 3",
+    "jugador": "Lionel Messi"
+  },
+  {
+    "posicion": "Mediocampista 1",
+    "jugador": "Lionel Messi"
+  },
+  {
+    "posicion": "Mediocampista 2",
+    "jugador": "Pedri"
+  },
+  {
+    "posicion": "Contencio 1",
+    "jugador": "Kylian Mbappé"
+  },
+  {
+    "posicion": "Defensa 1",
+    "jugador": "Lionel Messi"
+  },
+  {
+    "posicion": "Defensa 2",
+    "jugador": "Kevin De Bruyne"
+  },
+  {
+    "posicion": "Defensa 3",
+    "jugador": "Kylian Mbappé"
+  },
+  {
+    "posicion": "Defensa 4",
+    "jugador": "Cristiano Ronaldo"
+  },
+  {
+    "posicion": "Arquero",
+    "jugador": "Kevin De Bruyne"
+  }
+]
